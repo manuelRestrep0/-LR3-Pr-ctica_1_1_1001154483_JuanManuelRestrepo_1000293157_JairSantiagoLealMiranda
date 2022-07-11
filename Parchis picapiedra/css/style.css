@@ -1,0 +1,118 @@
+html{
+  min-height: 100%;
+  transform: scale(0.8);
+}
+
+body{
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+table{
+  margin: auto;
+  background-color: white;
+  text-align: center;
+}
+td{
+  width: 20px;
+  height: 20px;
+}
+h1{
+  text-align: center;
+  color: white;
+}
+.cuerpo{
+  /* que las cosas se vean en fila */
+  display: flex;
+  flex-direction: row;
+}
+.button {
+  cursor:pointer;
+  background-color: #1c681f; /* Green */
+  border: none;
+  color: rgb(245, 160, 3);
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.button:hover{
+  background-color: #b8ecb9; /* Green */
+  color: rgb(0, 0, 0);
+}
+.amarillo{
+  background-color: rgb(250, 250, 107);
+  text-align: center;
+}
+.verde{
+  background-color: rgb(72, 201, 72);
+  text-align: center;
+}
+.azul{
+  background-color: rgb(125, 125, 250);
+  text-align: center;
+}
+.rojo{
+  background-color: rgb(218, 84, 84);
+  text-align: center;
+}
+
+.fichaza{
+  width: 15px;
+  height: 15px;
+  border: 1px solid black;
+  border-radius: 50%;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
+#vacio{
+  background-color: black;
+}
+img{
+  width: 200px;
+  height: 200px;
+}
+
+.vertical{
+  font-size: 0.8rem;
+  letter-spacing: 1px
+}
+
+.inputs{
+  display: grid;
+  gap: 5px;
+  margin: auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  color: white;
+  width: 280px;
+  padding: 5px;
+  grid-template-columns: 80px 200px;
+
+}
+
+.dado1,.dado2{
+  width: 5px;
+}
+
+
+
+
+input{
+  border-radius: 5px;
+  background-color: #def;
+  border: 0;
+  outline: none;
+  background-color: rgb(15, 20, 18);
+  border: 0;
+  border-radius: 5px;
+  border: 1px solid;
+  /* tamaño del texto */
+  font-size: 1.5rem; 
+}

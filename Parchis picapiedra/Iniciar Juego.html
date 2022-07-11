@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Menu juego</title>
+</head>
+<body>
+    <!-- menu de un juego de parques, input de numero de jugadores, maximo 4 minimo 2-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Parques</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form action="tablero.html" method="GET">
+                    <div class="form-group">
+                        <label for="numeroJugadores">Numero de jugadores</label>
+                        <input type="number" class="form-control" id="numeroJugadores" name="numeroJugadores" min="2" max="4" required>
+                        <label for="numeroFichas">Numero de fichas</label>
+                        <input type="number" class="form-control" id="numeroFichas" name="numeroFichas" min="1" max="4" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Jugar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Tablero de parchís</title>
+
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <h1>Tablero de parchis</h1>
+  <div class ="cuerpo">
+    <!--espacio para escribir informacion-->
+    <div class="espacio">
+      <!-- tres inputs y 3 labels-->
+      <div class="inputs">
+        <label class ="labels" for="Informacion">Informacion:</label>
+        <input class ="input" readonly type="text" id="Informacion" name="Informacion" />
+        <label class ="labels"for="Dado1">Dado1:</label>
+        <input class ="input"readonly type="text" id="Dado1" name="Dado1" />
+        <label class ="labels"for="Dado2">Dado2:</label>
+        <input class ="input" readonly type="text" id="Dado2" name="Dado2" />
+      </div>
+    </div>
+  <table border="1px">
+    <!-- 1 -->
+    <tr>
+      <td class="casa-yellow amarillo" colspan="7" rowspan="7"></td>
+      <td colspan="2">1</td>
+      <td colspan="2" class = "amarillo ficha f6 ">SEGURO</td>
+      <td colspan="2">67</td>
+      <td class="casa-green verde" colspan="7" rowspan="7"></td>
+    </tr>
+    <!-- 2 -->
+    <tr>
+      <td colspan="2">2</td>
+      <td class="amarillo" colspan="2">-</td>
+      <td colspan="2">66</td>
+    </tr>
+    <!-- 3 -->
+    <tr>
+      <td colspan="2">3</td>
+      <td class="amarillo" colspan="2">-</td>
+      <td colspan="2">65</td>
+    </tr>
+    <!-- 4 -->
+    <tr>
+      <td colspan="2">4</td>
+      <td class="amarillo" colspan="2">-</td>
+      <td colspan="2">64</td>
+    </tr>
+    <!-- 5 -->
+    <tr>
+      <td class="amarillo ficha f7" colspan="2">SALIDA</td>
+      <td class="amarillo" colspan="2">-</td>
+      <td colspan="2" class ="verde ficha f5">SEGURO</td>
+    </tr>
+    <!-- 6 -->
+    <tr>
+      <td colspan="2">6</td>
+      <td class="amarillo" colspan="2">-</td>
+      <td colspan="2">62</td>
+    </tr>
+    <!-- 7 -->
+    <tr>
+      <td colspan="2">7</td>
+      <td class="amarillo" colspan="2">-</td>
+      <td colspan="2">61</td>
+    </tr>
+    <!-- 8 -->
+    <!-- Primera línea justo debajo de los grandes -->
+    <tr>
+      <td rowspan="2">16</td>
+      <td rowspan="2">15</td>
+      <td rowspan="2">14</td>
+      <td rowspan="2">13</td>
+      <td rowspan="2" class ="ficha amarillo vertical f8">S E G U R O</td>
+      <td rowspan="2">11</td>
+      <td rowspan="2">10</td>
+      <td id="vacio"></td>
+      <td>8</td>
+      <td>-</td>
+      <td>-</td>
+      <td>60</td>
+      <td id="vacio"></td>
+      <td rowspan="2">58</td>
+      <td rowspan="2">57</td>
+      <td class="verde ficha f4 vertical" rowspan="2">S A L I D A</td>
+      <td rowspan="2">55</td>
+      <td rowspan="2">54</td>
+      <td rowspan="2">53</td>
+      <td rowspan="2">52</td>
+    </tr>
+    <!-- 9 -->
+    <tr>
+      <td>9</td>
+      <td class = "final"colspan="4" rowspan="4">
+
+      </td>
+      <td>59</td>
+    </tr>
+    <!-- 10 -->
+    <tr>
+      <td rowspan="2" class = "azul ficha vertical f9">S E G U R O</td>
+      <td class="azul" rowspan="2">|</td>
+      <td class="azul" rowspan="2">|</td>
+      <td class="azul" rowspan="2">|</td>
+      <td class="azul" rowspan="2">|</td>
+      <td class="azul" rowspan="2">|</td>
+      <td class="azul" rowspan="2">|</td>
+      <td>|</td>
+      <td>|</td>
+      <td class="verde" rowspan="2">|</td>
+      <td class="verde" rowspan="2">|</td>
+      <td class="verde" rowspan="2">|</td>
+      <td class="verde" rowspan="2">|</td>
+      <td class="verde" rowspan="2">|</td>
+      <td class="verde" rowspan="2">|</td>
+      <td rowspan="2" class = "verde ficha f3 vertical">S E G U R O</td>
+    </tr>
+    <!-- 11 -->
+    <tr>
+      <td>|</td>
+      <td>|</td>
+    </tr>
+    <!-- 12 -->
+    <tr>
+      <td rowspan="2">18</td>
+      <td rowspan="2">19</td>
+      <td rowspan="2">20</td>
+      <td rowspan="2">21</td>
+      <td class="azul vertical f10 ficha" rowspan="2">S A L I D A</td>
+      <td rowspan="2">23</td>
+      <td rowspan="2">24</td>
+      <td>25</td>
+      <td>43</td>
+      <td rowspan="2">44</td>
+      <td rowspan="2">45</td>
+      <td rowspan="2" class ="ficha rojo f2 vertical">S E G U R O</td>
+      <td rowspan="2">47</td>
+      <td rowspan="2">48</td>
+      <td rowspan="2">49</td>
+      <td rowspan="2">50</td>
+    </tr>
+    <!-- 13 -->
+    <tr>
+      <td id="vacio"></td>
+      <td>26</td>
+      <td>-</td>
+      <td>-</td>
+      <td>42</td>
+      <td id="vacio"></td>
+    </tr>
+    <!-- 14 -->
+    <tr>
+      <td class="azul casa-blue" colspan="7" rowspan="7"></td>
+      <td colspan="2">27</td>
+      <td class="rojo" colspan="2">-</td>
+      <td colspan="2">41</td>
+      <td class="rojo casa-red" colspan="7" rowspan="7"></td>
+    </tr>
+    <!-- 15 -->
+    <tr>
+      <td colspan="2">28</td>
+      <td class="rojo" colspan="2">-</td>
+      <td colspan="2">40</td>
+    </tr>
+    <!-- 16 -->
+    <tr>
+      <td colspan="2" class ="azul ficha f11">SEGURO</td>
+      <td class="rojo" colspan="2">-</td>
+      <td class="ficha rojo f1"colspan="2" >SALIDA</td>
+    </tr>
+    <!-- 17 -->
+    <tr>
+      <td colspan="2">30</td>
+      <td class="rojo" colspan="2">-</td>
+      <td colspan="2">38</td>
+    </tr>
+    <!-- 18 -->
+    <tr>
+      <td colspan="2">31</td>
+      <td class="rojo" colspan="2">-</td>
+      <td colspan="2">37</td>
+    </tr>
+    <!-- 19 -->
+    <tr>
+      <td colspan="2">32</td>
+      <td class="rojo" colspan="2">-</td>
+      <td colspan="2">36</td>
+    </tr>
+    <!-- 20 -->
+    <tr>
+      <td colspan="2">33</td>
+      <td colspan="2" class =" ficha rojo f12"> SEGURO</td>
+      <td colspan="2">35</td>
+    </tr>
+
+  </table>
+
+
+
+  <!-- partial -->
+</div>
+</body>
+
+<script src ="js/Ficha.js" type="text/javascript"></script>
+<script src ="js/Casilla.js" type="text/javascript"></script>
+<script src = "js/jugador.js" type="text/javascript"></script>
+<script src ="js/Tablero.js" type="text/javascript"></script>
+<script src ="js/main.js" type="text/javascript"></script>
+</html>
