@@ -200,7 +200,7 @@ class Tablero {
                 ficha.getHtml().innerText = ""; 
                 document.querySelector(".inputs").removeChild(boton);;
                 this.eleccion = true; //cuando esta variable es true, la funcion termina automaticamente
-            }, 1000);
+            }, 2000);
         } else { // si exste movimiento valido, se ejecuta esto
             boton.addEventListener("click", () => { // se añade un evento al boton para que se pueda elegir no mover la ficha
                 Siguiente1.getHTML().removeEventListener("click", funcionSiguiente1);
@@ -440,7 +440,7 @@ class Tablero {
                 ficha.getHtml().innerText = "";
                 document.querySelector(".inputs").removeChild(boton);;
                 this.eleccion = true;
-            }, 1000);
+            }, 2000);
         }
         return new Promise(resolve => {
             //cuando se de clickea el boton se termina la funcion

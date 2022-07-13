@@ -20,7 +20,7 @@ let getQueryVariable =(variable)=> { // funcion que obtiene los datos de la url 
 }
 
 let tirarDado = () => { // funcion que retorna un numero aleatorio entre 1 y 6
-    return 5;//Math.floor(Math.random() * 6) + 1;
+    return Math.floor(Math.random() * 6) + 1;
 }
 asignarColoresInputs = (color)  =>{ // funcion que asigna los colores a los inputs de los dados
     let inputs = document.querySelectorAll("input");
@@ -39,7 +39,7 @@ let tiro = (i) => {   // funcion que ejecuta un tiro de los jugadores y devuelve
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(valor1 + valor2);
-        }, 2000);
+        }, 5000);
     }
     )
 }
@@ -59,7 +59,7 @@ let primeroEnJugar = async (numeroJugadores) => { // funcion que determina quien
     return new Promise((resolve, reject) => { // return asincrono que retorna el turno del jugador que empieza el juego
         setTimeout(() => { //
             resolve(obtenidos.indexOf(mayor));
-        }, 1000);
+        }, 2000);
     })
 }
 let siguienteTurno = async (turno, i) => {//funcion recursiva que hace ejecuta el turno del jugador 
