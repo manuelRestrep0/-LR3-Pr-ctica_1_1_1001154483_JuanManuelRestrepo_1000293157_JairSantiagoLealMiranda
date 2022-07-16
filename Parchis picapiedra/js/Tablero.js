@@ -9,6 +9,9 @@ class Tablero {
         this.eleccion = false; // boolean para saber si se ha apretado un boton (necesario para el movimiento de fichas)
         this.dado1ValorActual; // valor del dado 1
         this.dado2ValorActual; // valor del dado 2
+
+
+
         for (var i = 1; i <= 12; i++) { // crea las casillas del juego y les asigna un objeto html
             if (i % 3 == 1) {
                 this.casillas[i] = new Casilla(true, false, document.querySelector(`.f${i}`), 5, 10);
@@ -29,19 +32,19 @@ class Tablero {
             this.jugadores.push(new Jugador(colores[i], this.numeroFichas));
             for (var j = 0; j < this.numeroFichas ; j++) {
                 if (i == 0) {
-                    this.jugadores[i].fichas[j].setCasillaActual(this.casillas[1]);
+                    this.jugadores[i].fichas[j].setCasillaActual(this.casas[0]);
                     this.casas[0].addFicha(this.jugadores[i].fichas[j]);
                 }
                 if (i == 1) {
-                    this.jugadores[i].fichas[j].setCasillaActual(this.casillas[4]);
+                    this.jugadores[i].fichas[j].setCasillaActual(this.casas[1]);
                     this.casas[1].addFicha(this.jugadores[i].fichas[j]);
                 }
                 if (i == 2) {
-                    this.jugadores[i].fichas[j].setCasillaActual(this.casillas[7]);
+                    this.jugadores[i].fichas[j].setCasillaActual(this.casas[2]);
                     this.casas[2].addFicha(this.jugadores[i].fichas[j]);
                 }
                 if (i == 3) {
-                    this.jugadores[i].fichas[j].setCasillaActual(this.casillas[10]);
+                    this.jugadores[i].fichas[j].setCasillaActual(this.casas[3]);
                     this.casas[3].addFicha(this.jugadores[i].fichas[j]);
                 }
             }
@@ -114,10 +117,9 @@ class Tablero {
         let color = ficha.getColor();
         let aux = [];
         let casa;
-        if (casilla.esSalida && !salida) { // si la casilla es una salida y la ficha no es esta saliendo de la carcel, se detiene la funcion
+        if (casilla.esSalida && !salida) {
             return
         }
-
         for (let otraFicha of casilla.getFichas()) {// se recorre la fichas de la casilla 
             if (otraFicha.getColor() != color) { // si la ficha es de otro color, se guarda en un array auxiliar
                 aux.push(otraFicha);
@@ -171,11 +173,12 @@ class Tablero {
         }
     }
 
-    moverFicha(ficha, dado1, dado2,jugador) { // funcion para mover una ficha, 
+    async moverFicha(ficha, dado1, dado2,jugador) { // funcion para mover una ficha, 
         //recibe la ficha que se quiere mover, los dados y el jugador que la mueve
         let funcionSiguiente1; // variable para guardar la funcion para mover a una casilla siguiente
         let funcionSiguiente2; // variable para guardar la funcion para mover a dos casillas siguientes
         let funcionFinal; // variable para guardar la funcion para sacar la ficha del juego
+        let funcionSaltar;
         let posicionFicha = this.casillas.indexOf(ficha.getCasillaActual()); // se guarda la posicion de la ficha en el tablero
         let aux = ficha.getCasillaActual(); //variable auxiliar para guardar la casilla actual de la ficha
         let posicionFicha1 = (posicionFicha + 1) % 12; // posicion de la casilla siguiente a la ficha
@@ -198,14 +201,15 @@ class Tablero {
            // se pregunta si existe movimiento valido con los dados actuales para la ficha actual, si no existe, se ejectuta esto
             setTimeout(() => { // funcion asincrona que se ejecuta despues de 2 segundos se termina la funcion 
                 ficha.getHtml().innerText = ""; 
-                document.querySelector(".inputs").removeChild(boton);;
+                document.querySelector(".inputs").removeChild(boton);
                 this.eleccion = true; //cuando esta variable es true, la funcion termina automaticamente
             }, 2000);
         } else { // si exste movimiento valido, se ejecuta esto
-            boton.addEventListener("click", () => { // se añade un evento al boton para que se pueda elegir no mover la ficha
+            boton.addEventListener("click", funcionSaltar = () => { // se añade un evento al boton para que se pueda elegir no mover la ficha
                 Siguiente1.getHTML().removeEventListener("click", funcionSiguiente1);
                 Siguiente2.getHTML().removeEventListener("click", funcionSiguiente2);
                 casillaFinal.removeEventListener("click", funcionFinal);
+                boton.removeEventListener("click", funcionSaltar);
                 Siguiente1.getHTML().classList.remove("button");
                 Siguiente2.getHTML().classList.remove("button");
                 casillaFinal.classList.remove("button");
@@ -237,6 +241,7 @@ class Tablero {
                 document.getElementById("Dado1").value = this.dado1ValorActual;
                 document.getElementById("Dado2").value = this.dado2ValorActual;
                 casilla.classList.remove("button");
+                
                 Siguiente1.getHTML().classList.remove("button");
                 Siguiente2.getHTML().classList.remove("button");
                 casillaFinal.classList.remove("button");
@@ -246,17 +251,19 @@ class Tablero {
                 Siguiente1.getHTML().removeEventListener("click", funcionSiguiente1);
                 Siguiente2.getHTML().removeEventListener("click", funcionSiguiente2);
                 casillaFinal.removeEventListener("click", funcionFinal);
+                
 
                 this.eleccion = true; // como se movio la ficha, se termina el moviento 
 
             });
 
         }
+
         if (dado1 == Siguiente2.getValores()[1] || dado2 == Siguiente2.getValores()[1] || dado1 + dado2 == Siguiente2.getValores()[1]) {
          // se pregunta si la ficha se puede mover dos casillas adelante con los dados actuales, si se puede, se ejecuta esto   
-            let casilla = Siguiente2.getHTML();
-            casilla.className += " button";
-            casilla.addEventListener('click', funcionSiguiente2 = () => { //se añade un evento a la casilla en cuestion, cuando se de click la ficha se mueve
+            let casilla1 = Siguiente2.getHTML();
+            casilla1.className += " button";
+            casilla1.addEventListener('click', funcionSiguiente2 = () => { //se añade un evento a la casilla en cuestion, cuando se de click la ficha se mueve
                 this.comer(ficha, Siguiente2,false);
                 aux.quitarFicha(ficha);
                 Siguiente2.addFicha(ficha);
@@ -273,7 +280,7 @@ class Tablero {
                 }
                 document.getElementById("Dado1").value = this.dado1ValorActual;
                 document.getElementById("Dado2").value = this.dado2ValorActual;
-                casilla.classList.remove("button");
+                casilla1.classList.remove("button");
                 Siguiente1.getHTML().classList.remove("button");
                 Siguiente2.getHTML().classList.remove("button");
                 casillaFinal.classList.remove("button");
@@ -288,8 +295,6 @@ class Tablero {
             });
         }
         if(this.triplePar){ // aqui pregunta si se saco triple par, si se saco, se ejecuta esto
-            this.dado1ValorActual = 0;
-            this.dado2ValorActual = 0;
             casillaFinal.className += " button";
             casillaFinal.addEventListener('click', funcionFinal = () => { // se añade un evento a la casilla final, cuando se de click la ficha sale del juego
                 this.triplePar = false;
@@ -301,7 +306,7 @@ class Tablero {
                 this.dado2ValorActual = 0;
                 document.getElementById("Dado1").value = this.dado1ValorActual;
                 document.getElementById("Dado2").value = this.dado2ValorActual;
-                casillaFinal.classList.remove("button");
+                casillaFinal.classList.remove(" button");
                 Siguiente1.getHTML().classList.remove("button");
                 Siguiente2.getHTML().classList.remove("button");
                 document.querySelector(".inputs").removeChild(boton);
@@ -336,7 +341,7 @@ class Tablero {
         botonSacar.innerHTML = "Sacar fichas de la carcel";
         document.querySelector(".inputs").appendChild(botonSacar);
         let funcionSacar
-        botonSacar.addEventListener("click", funcionSacar = () => { // si el jugador elige sacar fichas de la carcel, se ejecuta esto
+        botonSacar.addEventListener("click", funcionSacar = () => {
             jugador.setSalio(true);
             let fichas = jugador.getFichas();
             for (let ficha of fichas) {
@@ -346,23 +351,23 @@ class Tablero {
                     aux.quitarFicha(ficha);
                     switch (ficha.getColor()) { 
                         case "red":
-                            this.casillas[1].addFicha(ficha);
                             this.comer(ficha, this.casillas[1],true);
+                            this.casillas[1].addFicha(ficha);
                             ficha.setCasillaActual(this.casillas[1]);
                             break;
                         case "green":
-                            this.casillas[4].addFicha(ficha);
                             this.comer(ficha, this.casillas[4],true);
+                            this.casillas[4].addFicha(ficha);
                             ficha.setCasillaActual(this.casillas[4]);
                             break;
                         case "yellow":
-                            this.casillas[7].addFicha(ficha);
                             this.comer(ficha, this.casillas[7],true);
+                            this.casillas[7].addFicha(ficha);
                             ficha.setCasillaActual(this.casillas[7]);
                             break;
                         case "blue":
-                            this.casillas[10].addFicha(ficha);
                             this.comer(ficha, this.casillas[10],true);
+                            this.casillas[10].addFicha(ficha);
                             ficha.setCasillaActual(this.casillas[10]);
                             break;
                     }

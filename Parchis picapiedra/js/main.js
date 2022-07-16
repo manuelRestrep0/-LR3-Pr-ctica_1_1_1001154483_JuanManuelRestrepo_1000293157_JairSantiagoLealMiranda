@@ -90,7 +90,6 @@ let siguienteTurno = async (turno, i) => {//funcion recursiva que hace ejecuta e
         i = 0;
     }
     finDeJuego = await tableroDeJuego.mover(turno, valorDado1, valorDado2,i == 3); // se ejecuta mover de el objeto tablero
-    
     if(i == 3){ // se reinicia el numero de pares sacados seguidos del jugador si ya llego a 3 
         i = 0;
     }    
